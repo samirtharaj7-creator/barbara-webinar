@@ -455,6 +455,16 @@ footer p a{color:#2f6684;font-weight:700}
   .agenda .num{left:-11px;top:24px;transform:translate(-50%,0);width:42px;height:42px;font-size:20px}
 }
 @media (prefers-reduced-motion:reduce){.agenda .node,.agenda .node:hover{transition:none}}
+
+/* ---- 4-point radial ---- */
+@media (min-width:1041px){
+  .agenda .radial.r4{height:820px}
+  .agenda .r4 .hub{top:420px}
+  .agenda .m1{left:50%;top:120px}.agenda .m2{left:84.5%;top:420px}.agenda .m3{left:50%;top:720px}.agenda .m4{left:15.5%;top:420px}
+  .agenda .r4 .node{width:270px}
+}
+.agenda .ag-intro{font-weight:700;color:var(--ink)}
+@media (max-width:1040px){.agenda .radial.r4{height:auto}}
 </style>
 </head>
 <body>
@@ -580,27 +590,25 @@ footer p a{color:#2f6684;font-weight:700}
 
 <section class="agenda" id="learn">
   <div class="wrap">
-    <div class="label ag-label">What you'll learn</div>
-    <p class="ag-intro">One hour, five topics. Barbara walks through each one, then answers your questions live.</p>
+    <div class="label ag-label">What we'll cover</div>
+    <p class="ag-intro">Don't miss the opportunity to be live with Barbara O'Neill.</p>
 
-    <div class="radial">
-      <svg viewBox="0 0 1000 780" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <ellipse class="orbit" cx="500" cy="410" rx="345" ry="290"/>
-        <line class="spoke" x1="500" y1="410" x2="500" y2="105"/>
-        <line class="spoke" x1="500" y1="410" x2="845" y2="325"/>
-        <line class="spoke" x1="500" y1="410" x2="715" y2="660"/>
-        <line class="spoke" x1="500" y1="410" x2="285" y2="660"/>
-        <line class="spoke" x1="500" y1="410" x2="155" y2="325"/>
+    <div class="radial r4">
+      <svg viewBox="0 0 1000 820" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <ellipse class="orbit" cx="500" cy="420" rx="345" ry="300"/>
+        <line class="spoke" x1="500" y1="420" x2="500" y2="120"/>
+        <line class="spoke" x1="500" y1="420" x2="845" y2="420"/>
+        <line class="spoke" x1="500" y1="420" x2="500" y2="720"/>
+        <line class="spoke" x1="500" y1="420" x2="155" y2="420"/>
       </svg>
 
-      <div class="hub"><div><h2>Five things Barbara will cover</h2><p>60 MINUTES · LIVE Q&amp;A</p></div></div>
+      <div class="hub"><div><h2>What we'll cover</h2><p>60 MINUTES · LIVE Q&amp;A</p></div></div>
 
       <ol class="nodes">
-        <li class="node n1"><span class="num" aria-hidden="true">1</span><h3>Why the body breaks down</h3><p>Disease has causes. Learn how to look for what may have contributed, and why removing a cause matters as much as treating a symptom.</p></li>
-        <li class="node n2"><span class="num" aria-hidden="true">2</span><h3>Your options, including one few people hear about</h3><p>The usual treatment paths, plus one that is rarely explained, and what to ask about each.</p></li>
-        <li class="node n3"><span class="num" aria-hidden="true">3</span><h3>How the body heals when it gets what it needs</h3><p>Nutrition, rest, water, sunlight, fresh air, exercise, and trust, in plain and practical terms.</p></li>
-        <li class="node n4"><span class="num" aria-hidden="true">4</span><h3>Working with your doctor</h3><p>What to bring to appointments and where lifestyle support fits. It adds to your medical care. It doesn't replace it.</p></li>
-        <li class="node n5"><span class="num" aria-hidden="true">5</span><h3>Your first 30 days</h3><p>What to do first, what can wait, and how to look after your mind and spirit while you decide.</p></li>
+        <li class="node m1"><span class="num" aria-hidden="true">1</span><h3>More options than you were given</h3><p>When you're diagnosed with a serious illness, you have more options than the few you were given.</p></li>
+        <li class="node m2"><span class="num" aria-hidden="true">2</span><h3>What is the EDEN Framework?</h3><p>Eden Valley's four-step approach to healing.</p></li>
+        <li class="node m3"><span class="num" aria-hidden="true">3</span><h3>Why it's impacting so many people</h3><p>Hear their stories.</p></li>
+        <li class="node m4"><span class="num" aria-hidden="true">4</span><h3>Live Q&amp;A with Barbara O'Neill</h3><p>Bring your questions.</p></li>
       </ol>
     </div>
 
