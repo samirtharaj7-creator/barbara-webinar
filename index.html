@@ -219,7 +219,7 @@ footer a.reg{color:#2f6684}
 .brand{font-family:var(--serif);font-size:20px;color:var(--ink)}
 .head-note{font-size:15px;color:var(--muted)}.head-note b{color:#4d6b33}
 .hero{padding:52px 0 72px;background:linear-gradient(180deg,#f6faf0 0%,#e9f2de 100%)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);grid-template-areas:"intro form" "details form";grid-template-rows:auto 1fr;column-gap:56px;row-gap:8px;align-items:start}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);grid-template-areas:"intro form" "details details";grid-template-rows:auto auto;column-gap:56px;row-gap:8px;align-items:start}
 .hero-intro{grid-area:intro}.hero-form{grid-area:form}.hero-details{grid-area:details}
 .hero h1{font-size:clamp(34px,4.3vw,54px);margin:0 0 22px;line-height:1.1}
 .hero .lede{font-size:19px;line-height:1.7;max-width:620px}
@@ -532,8 +532,6 @@ footer p{margin-bottom:10px}
 .legal p{margin-bottom:10px}
 @media (max-width:900px){.final-cta{padding:40px 0}footer{padding:32px 0 28px}.agenda{padding-top:36px!important;padding-bottom:36px!important}}
 /* ---- details card + hero testimony ---- */
-.hero-form .hquote{margin-top:32px}
-@media (max-width:1040px){.hero-form .hquote{margin-top:20px}}
 .detailcard{background:#fff;border-radius:22px;padding:22px 24px 8px;max-width:600px;box-shadow:0 16px 36px -24px rgba(31,51,34,.45);border:1px solid #dcebc9;margin:6px 0 22px}
 .dc-label{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#4d6b33;margin-bottom:12px}
 .detailcard .facts{margin:0 0 14px;gap:14px}
@@ -556,6 +554,18 @@ footer p{margin-bottom:10px}
   .hquote{flex-direction:column;gap:14px;padding:22px 18px}
   .hq-photo{width:76px;height:76px}
   .hquote .hq-big{font-size:23px}
+}
+/* ---- combined details + testimony card ---- */
+.hero-details{margin-top:28px}
+.infocard{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);background:#fff;border-radius:24px;overflow:hidden;border:1px solid #dcebc9;box-shadow:0 20px 44px -28px rgba(31,51,34,.5)}
+.infocard .detailcard{margin:0;max-width:none;border:0;border-radius:0;box-shadow:none;padding:26px 30px 14px}
+.infocard .hquote{max-width:none;border-radius:0;box-shadow:none;align-items:center;padding:30px 32px}
+.infocard .hquote .hq-big{font-size:26px}
+@media (max-width:860px){
+  .hero-details{margin-top:0}
+  .infocard{grid-template-columns:1fr}
+  .infocard .detailcard{padding:20px 18px 6px}
+  .infocard .hquote{padding:24px 20px}
 }
 </style>
 </head>
@@ -620,23 +630,10 @@ footer p{margin-bottom:10px}
           title="Webinar registration form">
         </iframe>
       </div>
-      <figure class="hquote">
-        <a class="hq-photo" href="#stories" aria-label="Watch June's story">
-          <img src="images/june.jpg" alt="June Moore" loading="lazy">
-          <span class="hq-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
-        </a>
-        <div class="hq-body">
-          <div class="hq-tag">Found Eden Valley through Barbara</div>
-          <blockquote>
-            <p class="hq-big">"I was very sick. Couldn't get out of bed."</p>
-            <p>"I was looking at Barbara O'Neill, and one of the places she recommended was Eden Valley Institute. … I am now walking a lot more."</p>
-          </blockquote>
-          <figcaption><b>June Moore</b>, Eden Valley guest · <a href="#stories">Watch her story</a></figcaption>
-        </div>
-      </figure>
     </div>
 
     <div class="hero-details">
+      <div class="infocard">
       <div class="detailcard">
       <div class="dc-label">Webinar details</div>
       <ul class="facts">
@@ -659,6 +656,21 @@ footer p{margin-bottom:10px}
         <li><span class="fi" aria-hidden="true">🎟</span><span><strong>Free.</strong> Registration is required.</span></li>
         <li><span class="fi" aria-hidden="true">🎙</span><span><strong>Hosted by Shanniel Fisher</strong> of Eden Valley Institute of Wellness</span></li>
       </ul>
+      </div>
+      <figure class="hquote">
+        <a class="hq-photo" href="#stories" aria-label="Watch June's story">
+          <img src="images/june.jpg" alt="June Moore" loading="lazy">
+          <span class="hq-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+        </a>
+        <div class="hq-body">
+          <div class="hq-tag">Found Eden Valley through Barbara</div>
+          <blockquote>
+            <p class="hq-big">"I was very sick. Couldn't get out of bed."</p>
+            <p>"I was looking at Barbara O'Neill, and one of the places she recommended was Eden Valley Institute. … I am now walking a lot more."</p>
+          </blockquote>
+          <figcaption><b>June Moore</b>, Eden Valley guest · <a href="#stories">Watch her story</a></figcaption>
+        </div>
+      </figure>
       </div>
 
 
