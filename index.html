@@ -358,6 +358,24 @@ img,video,iframe{max-width:100%}
   #top-form,#register,#learn{scroll-margin-top:76px}
 }
 @media (max-width:360px){.hc-s{display:none}}
+
+/* ---- more guest stories ---- */
+.more-guests{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:56px}
+.gcard{margin:0;text-align:left;display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center;background:var(--bg);border-radius:22px;padding:18px}
+.gcard .vid video{border-radius:14px;box-shadow:none}
+.gcard blockquote{margin:0 0 10px;font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.55;color:var(--ink)}
+.gcard figcaption{text-align:left;margin:0;padding:0}
+.gcard .who{margin:0;font-size:15px}.gcard .who b{color:var(--ink)}
+.results-note{margin-top:22px;margin-bottom:0}
+@media (max-width:900px){
+  .more-guests{grid-template-columns:1fr;gap:20px;margin-top:40px}
+  .gcard{grid-template-columns:110px 1fr;gap:16px;padding:14px}
+  .gcard blockquote{font-size:16.5px}
+}
+@media (max-width:420px){
+  .gcard{grid-template-columns:1fr}
+  .gcard .vid{max-width:220px;margin:0 auto}
+}
 </style>
 </head>
 <body>
@@ -502,7 +520,7 @@ img,video,iframe{max-width:100%}
 <section class="guests">
   <div class="wrap guests-grid">
     <div class="vid">
-      <video id="paulVid" controls playsinline preload="none"
+      <video controls playsinline preload="none"
         poster="https://video.squarespace-cdn.com/content/v1/67e5d1a1bf57e858ad8bae53/8d54de1d-1b63-4963-b540-3da095017ea9/thumbnail"
         data-hls="https://video.squarespace-cdn.com/content/v1/67e5d1a1bf57e858ad8bae53/8d54de1d-1b63-4963-b540-3da095017ea9/playlist.m3u8"
         aria-label="Paul's testimony, 1 minute"></video>
@@ -512,9 +530,31 @@ img,video,iframe{max-width:100%}
       <h2>"I have seen tremendous improvement"</h2>
       <blockquote class="bigquote">"I came here because I needed to address some health issues and just to have a restart in my health. I've been here for two weeks and I have seen tremendous improvement. I have more energy, my numbers have gone down, I've lost weight. Everything that I was looking for has been happening, and it's all because of the goodness and grace and mercy of God."</blockquote>
       <p class="who"><b>Paul</b>, graduate of Eden Valley's 14-day Lifestyle Program</p>
-      <p class="small">Individual results vary. Paul attended Eden Valley's live-in program, which is separate from this free webinar.</p>
-    </div>
+          </div>
   </div>
+  <div class="wrap more-guests">
+    <figure class="gcard">
+      <div class="vid"><video controls playsinline preload="none"
+          poster="https://video.squarespace-cdn.com/content/v1/67e5d1a1bf57e858ad8bae53/3ec401a8-4733-4421-b008-8738ec9e804d/thumbnail"
+          data-hls="https://video.squarespace-cdn.com/content/v1/67e5d1a1bf57e858ad8bae53/3ec401a8-4733-4421-b008-8738ec9e804d/playlist.m3u8"
+          aria-label="June's story, 1 minute"></video></div>
+      <figcaption>
+        <blockquote>"I was looking at Barbara O'Neill, and one of the places she recommended was Eden Valley Institute. Well, I was very sick. Couldn't get out of bed. … I am now walking a lot more. … I feel like I have benefited from being here."</blockquote>
+        <p class="who"><b>June Moore</b>, Eden Valley guest</p>
+      </figcaption>
+    </figure>
+    <figure class="gcard">
+      <div class="vid"><video controls playsinline preload="none"
+          poster="https://video.squarespace-cdn.com/content/v1/67e5d1a1bf57e858ad8bae53/586cc3ed-9559-4181-9d0a-c32920752b09/thumbnail"
+          data-hls="https://video.squarespace-cdn.com/content/v1/67e5d1a1bf57e858ad8bae53/586cc3ed-9559-4181-9d0a-c32920752b09/playlist.m3u8"
+          aria-label="Guest story about blood pressure and blood sugar, 45 seconds"></video></div>
+      <figcaption>
+        <blockquote>"I knew I needed healing for my body. … I've had no highs or lows. The most remarkable thing: my blood pressure, which at one point went to 184 … just maybe a couple days ago, it had fallen to under 120."</blockquote>
+        <p class="who"><b>Eden Valley guest</b>, 14-day Lifestyle Program</p>
+      </figcaption>
+    </figure>
+  </div>
+  <p class="wrap small results-note">Individual results vary. These guests attended Eden Valley's live-in program, which is separate from this free webinar. Talk with your doctor before changing any treatment or medication.</p>
 </section>
 
 <section class="wrap how">
@@ -640,25 +680,31 @@ function tz(){
 }
 sel.addEventListener('change', tz); tz();
 
-// Guest video: load hls.js on first play; fall back to native HLS (iPhone Safari).
+// Guest videos: load hls.js once, attach each video when it nears the screen; native HLS fallback (iPhone Safari).
 (function(){
-  var v = document.getElementById('paulVid'), src = v.getAttribute('data-hls'), ready = false;
-  function native(){ v.preload = 'none'; v.src = src; }
-  function attach(){
-    if (ready) return; ready = true;
+  var vids = [].slice.call(document.querySelectorAll('video[data-hls]')), lib = null;
+  function loadLib(cb){
+    if (window.Hls) return cb();
+    if (lib) return lib.push(cb);
+    lib = [cb];
     var s = document.createElement('script');
     s.src = 'https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js';
-    s.onload = function(){
-      if (!window.Hls || !Hls.isSupported()) return native();
-      var h = new Hls({autoStartLoad:false}); h.loadSource(src); h.attachMedia(v);
-      v.addEventListener('play', function(){ h.startLoad(); }, {once:true});
-    };
-    s.onerror = native;
+    s.onload = s.onerror = function(){ lib.forEach(function(f){ f(); }); };
     document.head.appendChild(s);
   }
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function(es, o){ if (es[0].isIntersecting) { attach(); o.disconnect(); } }, {rootMargin:'400px'}).observe(v);
-  } else { attach(); }
+  function attach(v){
+    var src = v.getAttribute('data-hls');
+    loadLib(function(){
+      if (!window.Hls || !Hls.isSupported()) { v.src = src; return; }
+      var h = new Hls({autoStartLoad:false}); h.loadSource(src); h.attachMedia(v);
+      v.addEventListener('play', function(){ h.startLoad(); }, {once:true});
+    });
+  }
+  if (!('IntersectionObserver' in window)) return vids.forEach(attach);
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { io.unobserve(e.target); attach(e.target); } }); }, {rootMargin:'400px'});
+  vids.forEach(function(v){ io.observe(v); });
+  // pause the others when one starts
+  vids.forEach(function(v){ v.addEventListener('play', function(){ vids.forEach(function(o){ if (o !== v) o.pause(); }); }); });
 })();
 </script>
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
