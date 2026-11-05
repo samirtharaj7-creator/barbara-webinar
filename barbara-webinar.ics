@@ -1,0 +1,21 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Eden Valley Institute//Barbara Webinar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:barbara-webinar-2026-11-19@eden-valley.org
+DTSTAMP:20261105T150000Z
+DTSTART:20261119T140000Z
+DTEND:20261119T150000Z
+SUMMARY:Free Webinar with Barbara O'Neill
+DESCRIPTION:Live with Barbara O'Neill\, hosted by Eden Valley Institute of Wellness. Your personal join link is in your confirmation email from Eden Valley. Questions? Call (970) 599-7711.
+LOCATION:Online. Join link in your confirmation email
+URL:https://samirtharaj7-creator.github.io/barbara-webinar/
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Barbara O'Neill webinar starts in 15 minutes
+END:VALARM
+END:VEVENT
+END:VCALENDAR
