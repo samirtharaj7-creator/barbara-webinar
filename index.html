@@ -330,6 +330,7 @@ img,video,iframe{max-width:100%}
 }
 
 /* ---- sticky top bar with countdown ---- */
+.embedded .site-head{position:static}
 .site-head{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.97);box-shadow:0 1px 0 var(--line),0 8px 24px -18px rgba(31,51,34,.45)}
 @supports (backdrop-filter:blur(8px)){.site-head{background:rgba(255,255,255,.88);backdrop-filter:blur(8px)}}
 .site-head .wrap{flex-wrap:nowrap;padding-top:10px;padding-bottom:10px}
@@ -886,6 +887,23 @@ sel.addEventListener('change', tz); tz();
   n.addEventListener('click',function(){ t.scrollBy({left:step()}); });
   t.addEventListener('scroll',function(){ window.requestAnimationFrame(update); },{passive:true});
   window.addEventListener('resize',update); update();
+})();
+
+// When shown inside eden-valley.org/barbara (Squarespace code block), report height and handle in-page links.
+(function(){
+  if (window.parent === window) return;
+  document.documentElement.classList.add('embedded');
+  function post(m){ m.src = 'barbara-webinar'; window.parent.postMessage(m, '*'); }
+  var last = 0;
+  function height(){ var h = document.documentElement.scrollHeight; if (h !== last) { last = h; post({type:'height', h:h}); } }
+  if ('ResizeObserver' in window) new ResizeObserver(height).observe(document.body);
+  window.addEventListener('load', height); setInterval(height, 1000); height();
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a) return;
+    var el = document.querySelector(a.getAttribute('href')); if (!el) return;
+    e.preventDefault();
+    post({type:'scroll', y: el.getBoundingClientRect().top + window.scrollY});
+  });
 })();
 </script>
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
