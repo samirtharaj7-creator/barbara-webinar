@@ -473,6 +473,39 @@ footer p a{color:#2f6684;font-weight:700}
   .reg-grid{grid-template-columns:minmax(0,1fr) 700px;gap:44px}
 }
 .ticks-close{margin:24px 0 0;font-size:18px;font-weight:700;color:var(--ink)}
+
+/* ---- testimonial carousel ---- */
+.guests .t-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:26px}
+.guests .t-head h2{margin:10px 0 0}
+.t-nav{display:flex;gap:10px}
+.t-btn{width:48px;height:48px;border-radius:50%;border:2px solid var(--line);background:#fff;color:var(--ink);font-size:20px;cursor:pointer}
+.t-btn:hover{border-color:#618242;color:#618242}
+.t-btn:disabled{opacity:.35;cursor:default}
+.track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 28px)/2);gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 18px;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.track:focus-visible{outline:3px solid #2f6684;outline-offset:4px;border-radius:12px}
+.tslide{margin:0;scroll-snap-align:start;display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:center;background:var(--bg);border-radius:22px;padding:20px}
+.tslide .vid video{display:block;width:100%;aspect-ratio:9/16;border-radius:14px;background:#1f3322;object-fit:cover}
+.tslide blockquote{margin:0 0 12px;font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.55;color:var(--ink)}
+.tslide figcaption{text-align:left;margin:0;padding:0}
+.tslide .who{margin:0;font-size:15px}.tslide .who b{color:var(--ink)}
+.t-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.t-dots span{width:9px;height:9px;border-radius:50%;background:#cfdcc2}
+.t-dots span.on{background:#618242}
+/* ---- final CTA ---- */
+.final-cta{background:#1f3322;color:#d7e3cf;text-align:center;padding:72px 0;border-radius:70px 70px 0 0}
+.final-cta h2{color:#fff;font-size:38px;margin:0 0 12px}
+.final-cta p{margin:0 0 28px;font-size:17px;color:#c9dbbd}
+.btn-lg{padding:18px 44px;font-size:19px;min-height:56px}
+.legal-links a{color:#2f6684;font-weight:700}
+@media (max-width:900px){
+  .track{grid-auto-columns:88%;gap:16px}
+  .tslide{grid-template-columns:1fr;padding:16px}
+  .tslide .vid{max-width:240px;margin:0 auto;width:100%}
+  .t-nav{display:none}
+  .final-cta{border-radius:36px 36px 0 0;padding:56px 0}
+  .final-cta h2{font-size:30px}
+}
 </style>
 </head>
 <body>
@@ -634,64 +667,43 @@ footer p a{color:#2f6684;font-weight:700}
   </div>
 </section>
 
-<section class="guests">
-  <div class="wrap guests-grid">
-    <div class="vid">
-      <video controls playsinline preload="none"
-        poster="https://video.squarespace-cdn.com/content/v1/67e5d1a1bf57e858ad8bae53/8d54de1d-1b63-4963-b540-3da095017ea9/thumbnail"
-        data-hls="https://video.squarespace-cdn.com/content/v1/67e5d1a1bf57e858ad8bae53/8d54de1d-1b63-4963-b540-3da095017ea9/playlist.m3u8"
-        aria-label="Paul's testimony, 1 minute"></video>
+<section class="guests" aria-labelledby="stories-title">
+  <div class="wrap">
+    <div class="t-head">
+      <div>
+        <div class="label">From our guests</div>
+        <h2 id="stories-title">Real stories from Eden Valley</h2>
+      </div>
+      <div class="t-nav">
+        <button type="button" class="t-btn" id="tPrev" aria-label="Previous story">&#8592;</button>
+        <button type="button" class="t-btn" id="tNext" aria-label="Next story">&#8594;</button>
+      </div>
     </div>
-    <div>
-      <div class="label">From our guests</div>
-      <h2>"I have seen tremendous improvement"</h2>
-      <blockquote class="bigquote">"I came here because I needed to address some health issues and just to have a restart in my health. I've been here for two weeks and I have seen tremendous improvement. I have more energy, my numbers have gone down, I've lost weight. Everything that I was looking for has been happening, and it's all because of the goodness and grace and mercy of God."</blockquote>
-      <p class="who"><b>Paul</b>, graduate of Eden Valley's 14-day Lifestyle Program</p>
-          </div>
-  </div>
-  <div class="wrap more-guests">
-    <figure class="gcard">
-      <div class="vid"><video controls playsinline preload="none"
-          poster="https://video.squarespace-cdn.com/content/v1/67e5d1a1bf57e858ad8bae53/3ec401a8-4733-4421-b008-8738ec9e804d/thumbnail"
-          data-hls="https://video.squarespace-cdn.com/content/v1/67e5d1a1bf57e858ad8bae53/3ec401a8-4733-4421-b008-8738ec9e804d/playlist.m3u8"
-          aria-label="June's story, 1 minute"></video></div>
-      <figcaption>
-        <blockquote>"I was looking at Barbara O'Neill, and one of the places she recommended was Eden Valley Institute. Well, I was very sick. Couldn't get out of bed. … I am now walking a lot more. … I feel like I have benefited from being here."</blockquote>
-        <p class="who"><b>June Moore</b>, Eden Valley guest</p>
-      </figcaption>
-    </figure>
-    <figure class="gcard">
-      <div class="vid"><video controls playsinline preload="none"
-          poster="https://video.squarespace-cdn.com/content/v1/67e5d1a1bf57e858ad8bae53/586cc3ed-9559-4181-9d0a-c32920752b09/thumbnail"
-          data-hls="https://video.squarespace-cdn.com/content/v1/67e5d1a1bf57e858ad8bae53/586cc3ed-9559-4181-9d0a-c32920752b09/playlist.m3u8"
-          aria-label="Guest story about blood pressure and blood sugar, 45 seconds"></video></div>
-      <figcaption>
-        <blockquote>"I knew I needed healing for my body. … I've had no highs or lows. The most remarkable thing: my blood pressure, which at one point went to 184 … just maybe a couple days ago, it had fallen to under 120."</blockquote>
-        <p class="who"><b>Eden Valley guest</b>, 14-day Lifestyle Program</p>
-      </figcaption>
-    </figure>
-  </div>
-  <p class="wrap small results-note">Individual results vary. These guests attended Eden Valley's live-in program, which is separate from this free webinar. Talk with your doctor before changing any treatment or medication.</p>
-</section>
-
-<section class="wrap how">
-  <div class="label">How to join</div>
-  <h2>Three simple steps</h2>
-  <div class="steps">
-    <div><div class="n">01</div><h3>Register</h3><p>Fill in the form. It takes about a minute, and your confirmation email includes your join link.</p></div>
-    <div><div class="n">02</div><h3>Join on Thursday morning</h3><p>Open your link a few minutes before 7:00 AM Mountain. It runs in your browser, so you don't need an account or any software.</p></div>
-    <div><div class="n">03</div><h3>Ask your question</h3><p>The last part of the hour is live Q&amp;A with Barbara. You'll leave with a clear list of next steps.</p></div>
-  </div>
-</section>
-
-<section class="wrap fit">
-  <div>
-    <h3>Before you sign up, please know</h3>
-    <ul>
-      <li><span class="pin amber"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="#fff"><rect x="10.5" y="4" width="3" height="10" rx="1.5"/><circle cx="12" cy="18.5" r="1.8"/></svg></span><span>This is <strong>education</strong>. It is not medical advice for your situation. Your own doctor knows your full history.</span></li>
-      <li><span class="pin amber"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="#fff"><rect x="10.5" y="4" width="3" height="10" rx="1.5"/><circle cx="12" cy="18.5" r="1.8"/></svg></span><span><strong>Nobody will promise you a cure.</strong> What you will get is a clearer understanding of your options.</span></li>
-      <li><span class="pin amber"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="#fff"><rect x="10.5" y="4" width="3" height="10" rx="1.5"/><circle cx="12" cy="18.5" r="1.8"/></svg></span><span>It's a <strong>live event at 7:00 AM Mountain</strong> (6:00 PM in Dubai). If you can, plan to be there.</span></li>
-    </ul>
+    <div class="track" id="tTrack" tabindex="0" aria-label="Guest stories, scroll sideways">
+      <figure class="tslide">
+        <div class="vid"><video controls playsinline preload="none" poster="https://video.squarespace-cdn.com/content/v1/67e5d1a1bf57e858ad8bae53/8d54de1d-1b63-4963-b540-3da095017ea9/thumbnail" data-hls="https://video.squarespace-cdn.com/content/v1/67e5d1a1bf57e858ad8bae53/8d54de1d-1b63-4963-b540-3da095017ea9/playlist.m3u8" aria-label="Paul's story, 1 minute"></video></div>
+        <figcaption>
+          <blockquote>"I came here because I needed to address some health issues and just to have a restart in my health. I've been here for two weeks and I have seen tremendous improvement. I have more energy, my numbers have gone down, I've lost weight. Everything that I was looking for has been happening, and it's all because of the goodness and grace and mercy of God."</blockquote>
+          <p class="who"><b>Paul</b>, graduate of Eden Valley's 14-day Lifestyle Program</p>
+        </figcaption>
+      </figure>
+      <figure class="tslide">
+        <div class="vid"><video controls playsinline preload="none" poster="https://video.squarespace-cdn.com/content/v1/67e5d1a1bf57e858ad8bae53/3ec401a8-4733-4421-b008-8738ec9e804d/thumbnail" data-hls="https://video.squarespace-cdn.com/content/v1/67e5d1a1bf57e858ad8bae53/3ec401a8-4733-4421-b008-8738ec9e804d/playlist.m3u8" aria-label="June's story, 1 minute"></video></div>
+        <figcaption>
+          <blockquote>"I was looking at Barbara O'Neill, and one of the places she recommended was Eden Valley Institute. Well, I was very sick. Couldn't get out of bed. … I am now walking a lot more. … I feel like I have benefited from being here."</blockquote>
+          <p class="who"><b>June Moore</b>, Eden Valley guest</p>
+        </figcaption>
+      </figure>
+      <figure class="tslide">
+        <div class="vid"><video controls playsinline preload="none" poster="https://video.squarespace-cdn.com/content/v1/67e5d1a1bf57e858ad8bae53/586cc3ed-9559-4181-9d0a-c32920752b09/thumbnail" data-hls="https://video.squarespace-cdn.com/content/v1/67e5d1a1bf57e858ad8bae53/586cc3ed-9559-4181-9d0a-c32920752b09/playlist.m3u8" aria-label="Guest story about blood pressure and blood sugar, 45 seconds"></video></div>
+        <figcaption>
+          <blockquote>"I knew I needed healing for my body. … I've had no highs or lows. The most remarkable thing: my blood pressure, which at one point went to 184 … just maybe a couple days ago, it had fallen to under 120."</blockquote>
+          <p class="who"><b>Eden Valley guest</b>, 14-day Lifestyle Program</p>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="t-dots" id="tDots" aria-hidden="true"></div>
+    <p class="small results-note">Individual results vary. These guests attended Eden Valley's live-in program, which is separate from this free webinar. Talk with your doctor before changing any treatment or medication.</p>
   </div>
 </section>
 
@@ -711,48 +723,11 @@ footer p a{color:#2f6684;font-weight:700}
   </div>
 </section>
 
-<section class="register" id="register">
-  <div class="wrap reg-grid">
-    <div>
-      <div class="label">Free registration</div>
-      <h2>Reserve your seat for Thursday, November 19</h2>
-      <p class="sub">7:00 AM Mountain Time · 60 minutes, including your questions.</p>
-      <ul class="checks">
-        <li><span class="pin"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span><strong>Your personal join link</strong>, sent by email right after you register, with a reminder before we begin.</span></li>
-        <li><span class="pin"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span><strong>Live Q&amp;A with Barbara.</strong> Bring the question you've been carrying.</span></li>
-        <li><span class="pin"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span><strong>Be there live.</strong> The teaching and the Q&amp;A happen once, that morning. It's worth setting the alarm for.</span></li>
-      </ul>
-      <div class="host host-dark">
-        <img src="images/barbara.jpg" alt="" aria-hidden="true">
-        <div><b>Barbara O'Neill</b><span>Live from Dubai. Hosted by Shanniel Fisher.</span></div>
-      </div>
-    </div>
-    <div class="formcard formcard-light">
-      <h2>Save my free seat</h2>
-      <div class="when2">Thu, Nov 19, 2026 · 7:00 AM MT · 60 minutes · Online webinar</div>
-      <div class="limited">Limited space</div>
-      <iframe
-        src="https://api.leadconnectorhq.com/widget/form/wJYXkthSdOmrqXyGDPMt"
-        style="width:100%;height:100%;border:none;border-radius:12px"
-        id="inline-wJYXkthSdOmrqXyGDPMt-bottom"
-        data-layout="{'id':'INLINE'}"
-        data-trigger-type="alwaysShow"
-        data-trigger-value=""
-        data-activation-type="alwaysActivated"
-        data-activation-value=""
-        data-deactivation-type="neverDeactivate"
-        data-deactivation-value=""
-        data-form-name="Barbara Webinar Nov 19 – Registration"
-        data-height="881"
-        data-layout-iframe-id="inline-wJYXkthSdOmrqXyGDPMt-bottom"
-        data-form-id="wJYXkthSdOmrqXyGDPMt"
-        data-cookie-consent="true"
-        data-cookie-consent-provider="auto"
-        title="Webinar registration form">
-      </iframe>
-      <p class="note">You'll receive your join link and confirmation by email. Seats for the live Q&amp;A are limited, so registering early helps us plan.</p>
-      <p class="note">Questions before Thursday? Call Eden Valley at <a href="tel:+19706671770">(970) 667-1770</a>.</p>
-    </div>
+<section class="final-cta" id="register">
+  <div class="wrap">
+    <h2>Ready to save your seat?</h2>
+    <p>Thursday, November 19, 2026 · 7:00 AM Mountain · Free · Live with Barbara O'Neill</p>
+    <a class="btn btn-primary btn-lg" href="#top-form">Register Now</a>
   </div>
 </section>
 
@@ -773,6 +748,7 @@ footer p a{color:#2f6684;font-weight:700}
     </div>
     <div class="legal">
       <p><strong>Educational purpose only.</strong> This webinar and page provide general health education. They are not medical advice, diagnosis, or treatment for any individual, and they do not replace the care of your physician or oncologist. Never stop, delay, or change a prescribed treatment based on educational material. Discuss any change with your own care team. No statement on this page or in the webinar claims that any approach can cure cancer or any other disease.</p>
+          <p class="legal-links"><a href="https://www.eden-valley.org/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a> · <a href="https://www.eden-valley.org/terms-and-conditions" target="_blank" rel="noopener">Terms and Conditions</a></p>
     </div>
   </div>
 </footer>
@@ -824,6 +800,25 @@ sel.addEventListener('change', tz); tz();
   vids.forEach(function(v){ io.observe(v); });
   // pause the others when one starts
   vids.forEach(function(v){ v.addEventListener('play', function(){ vids.forEach(function(o){ if (o !== v) o.pause(); }); }); });
+})();
+
+// Testimonial carousel arrows + dots
+(function(){
+  var t=document.getElementById('tTrack'); if(!t) return;
+  var p=document.getElementById('tPrev'), n=document.getElementById('tNext'), d=document.getElementById('tDots');
+  var slides=[].slice.call(t.children);
+  slides.forEach(function(){ d.appendChild(document.createElement('span')); });
+  function step(){ return slides[0].getBoundingClientRect().width + parseFloat(getComputedStyle(t).columnGap||0); }
+  function update(){
+    var max=t.scrollWidth-t.clientWidth-2;
+    p.disabled=t.scrollLeft<=2; n.disabled=t.scrollLeft>=max;
+    var i=Math.round(t.scrollLeft/step());
+    [].forEach.call(d.children,function(s,k){ s.classList.toggle('on',k===i); });
+  }
+  p.addEventListener('click',function(){ t.scrollBy({left:-step()}); });
+  n.addEventListener('click',function(){ t.scrollBy({left:step()}); });
+  t.addEventListener('scroll',function(){ window.requestAnimationFrame(update); },{passive:true});
+  window.addEventListener('resize',update); update();
 })();
 </script>
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
