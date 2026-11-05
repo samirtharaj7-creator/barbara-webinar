@@ -466,6 +466,15 @@ footer p a{color:#2f6684;font-weight:700}
 }
 .agenda .ag-intro{font-weight:700;color:var(--ink)}
 @media (max-width:1040px){.agenda .radial.r4{height:auto}}
+
+/* ---- wider form card on large screens so GHL shows two columns (needs ~650px) ---- */
+@media (min-width:1200px){
+  .hero-grid{grid-template-columns:minmax(0,1fr) 700px;column-gap:44px}
+  .hero h1{font-size:clamp(34px,3.4vw,48px)}
+  .guest img{width:200px;height:200px}
+  .formcard{padding:26px 16px 18px}
+  .reg-grid{grid-template-columns:minmax(0,1fr) 700px;gap:44px}
+}
 </style>
 </head>
 <body>
