@@ -531,6 +531,30 @@ footer p{margin-bottom:10px}
 .legal{margin-top:20px;padding-top:18px}
 .legal p{margin-bottom:10px}
 @media (max-width:900px){.final-cta{padding:40px 0}footer{padding:32px 0 28px}.agenda{padding-top:36px!important;padding-bottom:36px!important}}
+/* ---- details card + hero testimony ---- */
+.detailcard{background:#fff;border-radius:22px;padding:22px 24px 8px;max-width:600px;box-shadow:0 16px 36px -24px rgba(31,51,34,.45);border:1px solid #dcebc9;margin:6px 0 22px}
+.dc-label{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#4d6b33;margin-bottom:12px}
+.detailcard .facts{margin:0 0 14px;gap:14px}
+.detailcard .fi{background:#eef6e4;box-shadow:none}
+.hquote{position:relative;margin:0;max-width:600px;display:flex;gap:22px;align-items:flex-start;background:linear-gradient(150deg,#2b4a2e 0%,#1f3322 100%);color:#e7f2da;border-radius:22px;padding:26px 26px 24px;box-shadow:0 24px 44px -26px rgba(31,51,34,.8);overflow:hidden}
+.hquote:before{content:"\201C";position:absolute;right:18px;top:-30px;font-family:var(--serif);font-size:190px;line-height:1;color:rgba(143,197,99,.16);pointer-events:none}
+.hq-photo{position:relative;flex:none;width:92px;height:92px;border-radius:50%;overflow:hidden;border:3px solid #8fc563;display:block}
+.hq-photo img{width:100%;height:100%;object-fit:cover}
+.hq-play{position:absolute;right:2px;bottom:2px;width:30px;height:30px;border-radius:50%;background:#f3d34a;color:#1f3322;display:grid;place-items:center;box-shadow:0 4px 10px rgba(0,0,0,.35)}
+.hq-body{position:relative}
+.hq-tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1f3322;background:#f3d34a;border-radius:999px;padding:4px 11px;margin-bottom:12px}
+.hquote blockquote{margin:0 0 12px}
+.hquote blockquote p{margin:0;font-size:16px;line-height:1.6;color:#d6e6c6}
+.hquote .hq-big{font-family:var(--serif);font-size:27px;line-height:1.2;color:#fff;margin-bottom:10px}
+.hquote figcaption{text-align:left;margin:0;padding:0;font-size:14px;color:#b9cfa6}
+.hquote figcaption b{color:#fff}
+.hquote figcaption a{color:#f3d34a;font-weight:700}
+@media (max-width:600px){
+  .detailcard{padding:18px 16px 4px}
+  .hquote{flex-direction:column;gap:14px;padding:22px 18px}
+  .hq-photo{width:76px;height:76px}
+  .hquote .hq-big{font-size:23px}
+}
 </style>
 </head>
 <body>
@@ -569,7 +593,6 @@ footer p{margin-bottom:10px}
       </div>
       <p class="lede">Learn about the <strong>EDEN Framework</strong>, the four-step approach that has brought healing to many people.</p>
       <ul class="conds" aria-label="Conditions covered"><li>Cancer</li><li>Diabetes</li><li>Hypertension</li><li>Lyme</li><li>And more</li></ul>
-      <p class="hosted">Hosted by <strong>Shanniel Fisher</strong></p>
     </div>
 
     <div class="hero-form" id="top-form">
@@ -598,6 +621,8 @@ footer p{margin-bottom:10px}
     </div>
 
     <div class="hero-details">
+      <div class="detailcard">
+      <div class="dc-label">Webinar details</div>
       <ul class="facts">
         <li><span class="fi" aria-hidden="true">📅</span><span><strong>Thursday, November 19, 2026 at 7:00 AM Mountain</strong><br>
           <label class="tzline" for="tz">Show my time zone:
@@ -616,12 +641,24 @@ footer p{margin-bottom:10px}
         <li><span class="fi" aria-hidden="true">⏱</span><span><strong>60 minutes</strong>, including your questions</span></li>
         <li><span class="fi" aria-hidden="true">💻</span><span><strong>Online.</strong> Join from your phone or computer.</span></li>
         <li><span class="fi" aria-hidden="true">🎟</span><span><strong>Free.</strong> Registration is required.</span></li>
+        <li><span class="fi" aria-hidden="true">🎙</span><span><strong>Hosted by Shanniel Fisher</strong> of Eden Valley Institute of Wellness</span></li>
       </ul>
+      </div>
 
 
-      <figure class="tquote">
-        <blockquote>"I've been here for two weeks and I have seen tremendous improvement. I have more energy, my numbers have gone down, I've lost weight."</blockquote>
-        <figcaption><b>Paul</b>, graduate of Eden Valley's 14-day Lifestyle Program</figcaption>
+      <figure class="hquote">
+        <a class="hq-photo" href="#stories" aria-label="Watch June's story">
+          <img src="images/june.jpg" alt="June Moore" loading="lazy">
+          <span class="hq-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+        </a>
+        <div class="hq-body">
+          <div class="hq-tag">Found Eden Valley through Barbara</div>
+          <blockquote>
+            <p class="hq-big">"I was very sick. Couldn't get out of bed."</p>
+            <p>"I was looking at Barbara O'Neill, and one of the places she recommended was Eden Valley Institute. … I am now walking a lot more."</p>
+          </blockquote>
+          <figcaption><b>June Moore</b>, Eden Valley guest · <a href="#stories">Watch her story</a></figcaption>
+        </div>
       </figure>
     </div>
   </div>
@@ -689,7 +726,7 @@ footer p{margin-bottom:10px}
   </div>
 </section>
 
-<section class="guests" aria-labelledby="stories-title">
+<section class="guests" id="stories" aria-labelledby="stories-title">
   <div class="wrap">
     <div class="t-head">
       <div>
@@ -764,7 +801,7 @@ footer p{margin-bottom:10px}
       <div>
         <h4>The webinar</h4>
         <p>Eden Valley Institute of Wellness · Thursday, November 19, 2026 · 7:00 AM Mountain Time · Online webinar. Live with Barbara O'Neill, hosted by Shanniel Fisher.</p>
-        <p>Free. Limited space. Questions? Call <a href="tel:+19706671770">(970) 667-1770</a>.</p>
+        <p>Free. Limited space. Questions? Call <a href="tel:+19705997711">(970) 599-7711</a>.</p>
         <p><a class="reg" href="#top-form">Save Your Spot →</a></p>
       </div>
     </div>
