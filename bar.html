@@ -44,10 +44,9 @@
     });
 
     // Tell Squarespace how tall the bar is (it changes on phones)
-    var last = 0;
-    function h(){ var v = Math.ceil(head.getBoundingClientRect().height); if (v && v !== last) { last = v; post({type:'barHeight', h:v}); } }
+    function h(){ var v = Math.ceil(head.getBoundingClientRect().height); if (v) post({type:'barHeight', h:v}); }
     if ('ResizeObserver' in window) new ResizeObserver(h).observe(head);
-    window.addEventListener('load', h); setInterval(h, 1000); h();
+    window.addEventListener('load', h); setInterval(h, 2000); h();
   });
 })();
 </script>
