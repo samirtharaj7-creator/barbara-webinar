@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" class="embedded bar-only">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Countdown</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>html,body{margin:0;background:#fff;overflow:hidden}</style>
+</head>
+<body>
+<script>
+// Pinned copy of the page's top bar, shown by the Squarespace code block once the real bar scrolls away.
+// It borrows the header markup and styles from index.html so the two never drift apart.
+(function(){
+  function post(m){ m.src = 'barbara-webinar'; window.parent.postMessage(m, '*'); }
+  fetch('./', {cache:'no-cache'}).then(function(r){ return r.text(); }).then(function(html){
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    doc.querySelectorAll('style').forEach(function(s){ document.head.appendChild(document.importNode(s, true)); });
+    var fix = document.createElement('style');
+    fix.textContent = '.site-head{position:static!important;box-shadow:none!important;background:#fff!important;backdrop-filter:none!important}body{background:#fff!important}';
+    document.head.appendChild(fix);
+    var head = document.importNode(doc.querySelector('.site-head'), true);
+    document.body.insertBefore(head, document.body.firstChild);
+
+    // Countdown (same start time as the page)
+    var START = Date.UTC(2026, 10, 19, 14, 0, 0);
+    function pad(n){ return String(n).padStart(2,'0'); }
+    function tick(){
+      var s = Math.floor(Math.max(0, START - Date.now())/1000);
+      document.getElementById('cd').textContent = pad(Math.floor(s/86400));
+      document.getElementById('ch').textContent = pad(Math.floor(s%86400/3600));
+      document.getElementById('cm').textContent = pad(Math.floor(s%3600/60));
+      document.getElementById('cs').textContent = pad(s%60);
+    }
+    tick(); setInterval(tick, 1000);
+
+    // "Save Your Spot" asks the main page to scroll to the form
+    head.addEventListener('click', function(e){
+      var a = e.target.closest('a[href^="#"]'); if (!a) return;
+      e.preventDefault(); post({type:'goto', hash:a.getAttribute('href')});
+    });
+
+    // Tell Squarespace how tall the bar is (it changes on phones)
+    var last = 0;
+    function h(){ var v = Math.ceil(head.getBoundingClientRect().height); if (v && v !== last) { last = v; post({type:'barHeight', h:v}); } }
+    if ('ResizeObserver' in window) new ResizeObserver(h).observe(head);
+    window.addEventListener('load', h); setInterval(h, 1000); h();
+  });
+})();
+</script>
+</body>
+</html>

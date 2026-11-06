@@ -904,6 +904,11 @@ sel.addEventListener('change', tz); tz();
     e.preventDefault();
     post({type:'scroll', y: el.getBoundingClientRect().top + window.scrollY});
   });
+  // The pinned bar (bar.html) asks, through Squarespace, to jump to a section
+  window.addEventListener('message', function(e){
+    var d = e.data || {}; if (e.source !== window.parent || d.src !== 'bw-parent' || d.type !== 'goto') return;
+    var el = document.querySelector(d.hash); if (el) post({type:'scroll', y: el.getBoundingClientRect().top + window.scrollY});
+  });
 })();
 </script>
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
