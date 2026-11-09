@@ -904,6 +904,17 @@ sel.addEventListener('change', tz); tz();
     e.preventDefault();
     post({type:'scroll', y: el.getBoundingClientRect().top + window.scrollY});
   });
+  // GoHighLevel's form sends "set-sticky-contacts" / "_ud" only after a successful submit.
+  // Pass it up as a lead so Squarespace can fire the Facebook pixel Lead event.
+  var lastLead = 0;
+  window.addEventListener('message', function(e){
+    var d = e.data;
+    if (!/^https:\/\/([a-z0-9-]+\.)*(leadconnectorhq\.com|msgsndr\.com)$/.test(e.origin)) return;
+    if (!Array.isArray(d) || d[0] !== 'set-sticky-contacts' || d[1] !== '_ud') return;
+    if (Date.now() - lastLead < 5000) return; // one event per submit
+    lastLead = Date.now();
+    post({type:'lead', form:'barbara-webinar-2026-11'});
+  });
   // The pinned bar (bar.html) asks, through Squarespace, to jump to a section
   window.addEventListener('message', function(e){
     var d = e.data || {}; if (e.source !== window.parent || d.src !== 'bw-parent' || d.type !== 'goto') return;
