@@ -651,6 +651,23 @@ footer p{margin-bottom:10px}
 .oc-btn.is-off{background:rgba(255,255,255,.14);color:#c9dbbd;box-shadow:none}
 .oc-btn.is-off:hover{transform:none;background:rgba(255,255,255,.18);color:#c9dbbd}
 @media (min-width:1200px){.mgrid{grid-template-columns:repeat(3,1fr)}.mgrid .mbtn:last-child:nth-child(odd){grid-column:auto}}
+
+/* layout: features first, reservation at the end */
+.hero-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-self:center}
+.hero-photos img{width:100%;height:190px;object-fit:cover;border-radius:20px;display:block;box-shadow:0 18px 36px -24px rgba(31,51,34,.6)}
+.hero-photos .hp-main{grid-column:1/3;height:300px}
+.hero-cta{margin:24px 0 0}
+.reserve-end{padding:80px 0 90px}
+.reserve-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+.reserve-copy h2{font-size:38px;margin:12px 0 16px}
+.reserve-card .offercard{max-width:560px;margin-left:auto}
+@media (max-width:900px){
+  .hero-photos img{height:140px}.hero-photos .hp-main{height:210px}
+  .reserve-end{padding:56px 0 60px}
+  .reserve-grid{grid-template-columns:1fr;gap:28px}
+  .reserve-copy h2{font-size:30px}
+  .reserve-card .offercard{margin:0 auto}
+}
 </style>
 </head>
 <body>
@@ -683,37 +700,13 @@ footer p{margin-bottom:10px}
           <li><span class="fi" aria-hidden="true">🌱</span><span><strong>8 weeks of aftercare</strong><br>Coaching at home to help the changes last</span></li>
         </ul>
       </div>
+      <div class="cta-row hero-cta"><a class="btn btn-primary" href="#included">See what's included</a><a class="btn btn-ghost" href="#reserve">Price and months</a></div>
     </div>
 
-    <div class="hero-form" id="reserve">
-      <div class="formcard offercard">
-        <span class="limited">Webinar guests only</span>
-        <h2>Reserve your seat</h2>
-        <p class="oc-prog">Cancer &amp; Lyme Program · 14 days</p>
-        <div class="oc-price">
-          <span class="oc-was">Regular price <s>$6,995</s></span>
-          <span class="oc-now">$5,000</span>
-          <span class="oc-save">You save $1,995</span>
-        </div>
-        <fieldset class="months" id="months">
-          <legend>Choose your month</legend>
-          <div class="mgrid" id="mgrid"></div>
-        </fieldset>
-        <div class="oc-deposit">
-          <b>$100 today</b> holds your seat<span id="ocMonth"></span>. It comes off your program fee, so the balance is $4,900.
-        </div>
-        <a class="btn btn-primary btn-lg oc-btn is-off" id="payBtn" href="#months" aria-disabled="true">Choose a month first</a>
-        <p class="note">Space is limited. We accept a small number of guests each session so everyone gets personal care.</p>
-        <p class="note oc-call">Questions first? Call admissions at <a href="tel:+19706697730">(970) 669-7730</a></p>
-      </div>
-    </div>
-
-    <div class="hero-details">
-      <div class="photo-row">
-        <img src="images/offer/valley.jpg" alt="The Eden Valley campus and farmland below the foothills" loading="lazy">
-        <img src="images/offer/care.jpg" alt="A smiling guest during a treatment with an Eden Valley therapist" loading="lazy">
-        <img src="images/offer/room.jpg" alt="A guest room at Eden Valley with two beds" loading="lazy">
-      </div>
+    <div class="hero-form hero-photos">
+      <img class="hp-main" src="images/offer/valley.jpg" alt="The Eden Valley campus and farmland below the foothills">
+      <img src="images/offer/care.jpg" alt="A smiling guest during a treatment with an Eden Valley therapist" loading="lazy">
+      <img src="images/offer/room.jpg" alt="A guest room at Eden Valley with two beds" loading="lazy">
     </div>
   </div>
 </section>
@@ -827,11 +820,42 @@ footer p{margin-bottom:10px}
   </div>
 </section>
 
-<section class="final-cta">
-  <div class="wrap">
-    <h2>Your seat is waiting</h2>
-    <p>Cancer &amp; Lyme Program · December through June · <s>$6,995</s> $5,000 for webinar guests</p>
-    <a class="btn btn-primary btn-lg" href="#reserve">Choose My Month</a>
+<section class="reserve-end" id="reserve">
+  <div class="wrap reserve-grid">
+    <div class="reserve-copy">
+      <p class="label">Reserve your seat</p>
+      <h2>Your seat is waiting</h2>
+      <p>Choose the month that works for you and hold your seat with $100. Our admissions team will call you to plan your stay.</p>
+      <ul class="ticks">
+        <li><span class="pin"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span><strong>14 days at Eden Valley</strong> with doctor consultation, treatments, meals, and lectures</span></li>
+        <li><span class="pin"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span><strong>8 weeks of aftercare</strong> coaching once you're home</span></li>
+        <li><span class="pin"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span><strong>Free pickup</strong> from Denver International Airport</span></li>
+        <li><span class="pin"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span><strong>Your $100 comes off the price,</strong> so the balance is $4,900</span></li>
+      </ul>
+    </div>
+    <div class="reserve-card">
+      <div class="formcard offercard">
+        <span class="limited">Webinar guests only</span>
+        <h2>Reserve your seat</h2>
+        <p class="oc-prog">Cancer &amp; Lyme Program · 14 days</p>
+        <div class="oc-price">
+          <span class="oc-was">Regular price <s>$6,995</s></span>
+          <span class="oc-now">$5,000</span>
+          <span class="oc-save">You save $1,995</span>
+        </div>
+        <fieldset class="months" id="months">
+          <legend>Choose your month</legend>
+          <div class="mgrid" id="mgrid"></div>
+        </fieldset>
+        <div class="oc-deposit">
+          <b>$100 today</b> holds your seat<span id="ocMonth"></span>. It comes off your program fee, so the balance is $4,900.
+        </div>
+        <a class="btn btn-primary btn-lg oc-btn is-off" id="payBtn" href="#months" aria-disabled="true">Choose a month first</a>
+        <p class="note">Space is limited. We accept a small number of guests each session so everyone gets personal care.</p>
+        <p class="note oc-call">Questions first? Call admissions at <a href="tel:+19706697730">(970) 669-7730</a></p>
+      </div>
+    </div>
+
   </div>
 </section>
 
