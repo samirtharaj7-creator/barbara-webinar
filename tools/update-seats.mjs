@@ -1,51 +1,63 @@
-// Reads how many seats are left in each session from GoHighLevel and writes seats.json
-// with only the sessions that are full (no counts are published).
+// Reads seats sold per session from GoHighLevel and writes seats.json with only the
+// sessions that are full (no counts are published). The 12 spots per session are shared
+// by all three programs: a session is full once 12 reservations are made across them.
 // Runs in GitHub Actions every 10 minutes. Needs the GHL_TOKEN secret
 // (a GoHighLevel Private Integration token with the "View Prices" scope).
 import { readFile, writeFile } from 'node:fs/promises';
 
 const TOKEN = process.env.GHL_TOKEN;
 const LOCATION = 'pcUHM2MDvoDgeO1iXSiT';
-const PRODUCT = '6afbbdcfef0fdd31635b125a'; // Cancer & Lyme Program Seat Reservation
-const OUT = new URL('../seats.json', import.meta.url);
-
-// Price id of each session's variant in GoHighLevel -> key used by offer.html.
-// (June 2027 is an unused variant and is left out.)
-const SESSIONS = {
-  '6afbbdcfef0fdd31635b1262': 'dec6',   // December 6-20, 2026
-  '6afbc5a3e60b5cf5df8791fc': 'jan3',   // January 3-17, 2027
-  '6afbc5a3e60b5cf5df879204': 'jan24',  // January 24 - February 7, 2027
-  '6afbc5a3e60b5cf5df87920c': 'feb14',  // February 14-28, 2027
-  '6afbc5a3e60b5cf5df879214': 'mar7',   // March 7-21, 2027
-  '6afbc5a3e60b5cf5df87921c': 'mar28',  // March 28 - April 11, 2027
+const SPOTS = 12; // per session, shared; each variant also starts at 12 in GoHighLevel
+const PRODUCTS = {
+  '6afbbdcfef0fdd31635b125a': '14-Day Intensive Program',
+  '6afd313fac90a35bbd5fdb8d': 'Diabetes & Hypertension Program',
+  '6afd319af3efb6f8059b7179': 'General Lifestyle Program',
 };
+// Session key used by offer.html -> text that appears in the variant name
+const SESSIONS = {
+  dec6:  'December 6',
+  jan3:  'January 3',
+  jan24: 'January 24',
+  feb14: 'February 14',
+  mar7:  'March 7',
+  mar28: 'March 28',
+};
+const OUT = new URL('../seats.json', import.meta.url);
 
 if (!TOKEN) { console.log('GHL_TOKEN is not set; leaving seats.json as it is.'); process.exit(0); }
 
-async function getPrices(version) {
-  const url = `https://services.leadconnectorhq.com/products/${PRODUCT}/price?locationId=${LOCATION}&limit=50`;
+async function getPrices(product, version) {
+  const url = `https://services.leadconnectorhq.com/products/${product}/price?locationId=${LOCATION}&limit=50`;
   const res = await fetch(url, { headers: { Authorization: `Bearer ${TOKEN}`, Version: version, Accept: 'application/json' } });
   if (!res.ok) throw new Error(`GoHighLevel answered ${res.status} (Version ${version}): ${(await res.text()).slice(0, 300)}`);
   return (await res.json()).prices || [];
 }
-
-let prices;
-try { prices = await getPrices('2021-07-28'); }
-catch (e) { console.log(e.message); prices = await getPrices('v3'); }
-
-const left = {};
-for (const p of prices) {
-  const id = p._id || p.id;
-  if (!SESSIONS[id]) continue;
-  if (!p.trackInventory) throw new Error(`Inventory tracking is off for ${SESSIONS[id]}`);
-  left[SESSIONS[id]] = Math.max(0, Number(p.availableQuantity) || 0);
+async function prices(product) {
+  try { return await getPrices(product, '2021-07-28'); }
+  catch (e) { console.log(e.message); return await getPrices(product, 'v3'); }
 }
-const missing = Object.values(SESSIONS).filter(k => !(k in left));
-if (missing.length) throw new Error(`No seat count for: ${missing.join(', ')}`);
-console.log('Seats left:', left);
 
-// Only the full sessions are published; the page crosses them out.
-const full = Object.values(SESSIONS).filter(k => left[k] === 0);
+const sold = Object.fromEntries(Object.keys(SESSIONS).map(k => [k, 0]));
+const soldOut = new Set();
+for (const [product, label] of Object.entries(PRODUCTS)) {
+  const list = await prices(product);
+  const seen = new Set();
+  for (const p of list) {
+    const name = p.name || '';
+    const key = Object.keys(SESSIONS).find(k => name.includes(SESSIONS[k]));
+    if (!key) continue; // e.g. the unused June variant
+    if (!p.trackInventory) throw new Error(`Inventory tracking is off for ${label}: ${name}`);
+    const left = Math.max(0, Number(p.availableQuantity) || 0);
+    sold[key] += Math.max(0, SPOTS - left);
+    if (left === 0) soldOut.add(key);
+    seen.add(key);
+  }
+  const missing = Object.keys(SESSIONS).filter(k => !seen.has(k));
+  if (missing.length) throw new Error(`${label}: no variant found for ${missing.join(', ')}`);
+}
+console.log('Reserved per session (all programs):', sold);
+
+const full = Object.keys(SESSIONS).filter(k => sold[k] >= SPOTS || soldOut.has(k));
 const next = JSON.stringify({ full }, null, 2) + '\n';
 let prev = '';
 try { prev = await readFile(OUT, 'utf8'); } catch {}
