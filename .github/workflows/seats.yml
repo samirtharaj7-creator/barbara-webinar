@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: '*/10 * * * *'
   workflow_dispatch:
+  repository_dispatch:
+    types: [seat-check]
 
 permissions:
   contents: write
@@ -20,6 +22,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Give GoHighLevel a moment after a payment
+        if: github.event_name == 'repository_dispatch'
+        run: sleep 20
       - name: Read seats from GoHighLevel
         env:
           GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
