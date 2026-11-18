@@ -7,7 +7,7 @@
 <title>Reserve My Spot: Eden Valley 14-Day Lifestyle Program</title>
 <meta name="description" content="A special price for Barbara O'Neill webinar guests: Eden Valley's 14-day lifestyle program for $5,000 (regular $6,995). Reserve your spot for $100.">
 <meta property="og:title" content="Webinar guest offer: Eden Valley's 14-day lifestyle program">
-<meta property="og:description" content="$5,000 for webinar guests (regular $6,995) · Choose your month · Reserve your spot for $100.">
+<meta property="og:description" content="$5,000 for webinar guests (regular $6,995) · Choose your session · Reserve your spot for $100.">
 <meta property="og:image" content="https://samirtharaj7-creator.github.io/barbara-webinar/images/offer/valley.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -585,7 +585,8 @@ footer p{margin-bottom:10px}
 .offercard h2{margin-bottom:4px}
 .oc-prog{color:#c9dbbd;font-size:15px;margin:0 0 18px}
 .oc-price{background:rgba(255,255,255,.06);border:1px solid rgba(143,197,99,.35);border-radius:18px;padding:18px 16px 16px;display:flex;flex-direction:column;align-items:center;gap:2px;margin-bottom:16px}
-.oc-was{font-size:15px;color:#b9cfa6}
+.oc-was{display:block;font-size:17px;color:#d6e6c6;line-height:1.2}
+.oc-was s{display:block;font-family:var(--serif);font-size:44px;color:#fff;opacity:.85;text-decoration-thickness:3px;text-decoration-color:#f3a24a;margin:2px 0 4px}
 .oc-now{font-family:var(--serif);font-size:64px;line-height:1.05;color:#fff}
 .oc-save{display:inline-block;background:#f3d34a;color:#1f3322;font-weight:700;font-size:14px;letter-spacing:.04em;border-radius:999px;padding:4px 12px;margin-top:6px}
 .oc-deposit{color:#e7f2da;font-size:16px;line-height:1.55;margin:0 4px 18px}
@@ -644,7 +645,8 @@ footer p{margin-bottom:10px}
 .mbtn:hover{border-color:#8fc563}
 .mbtn.on{background:#8fc563;border-color:#8fc563}
 .mbtn.on b,.mbtn.on small,.mbtn.on span{color:#1f3322}
-.mbtn.full{opacity:.45;cursor:not-allowed}
+.mbtn.full{opacity:.5;cursor:not-allowed}
+.mbtn.full b,.mbtn.full small{text-decoration:line-through;text-decoration-thickness:2px}
 .mbtn.full span{color:#e7f2da}
 .mbtn:focus-visible{outline:3px solid #f3d34a;outline-offset:2px}
 .mgrid .mbtn:last-child:nth-child(odd){grid-column:1/3}
@@ -690,7 +692,7 @@ footer p{margin-bottom:10px}
   <div class="wrap">
     <div class="head-left">
       <a class="brand-logo" href="https://www.eden-valley.org/" aria-label="Eden Valley Institute of Wellness"><picture><source srcset="images/ev-logo.webp" type="image/webp"><img src="images/ev-logo.png" alt="Eden Valley Institute of Wellness" width="750" height="233"></picture></a>
-      <span class="head-note"><b>Webinar guest offer</b> · 12 seats each month</span>
+      <span class="head-note"><b>Webinar guest offer</b> · Limited spots</span>
     </div>
     <div class="head-right">
       <a class="btn btn-primary head-btn" href="#reserve">Reserve My Spot</a>
@@ -707,7 +709,7 @@ footer p{margin-bottom:10px}
       <p class="lede">You heard what can happen when the body is supported well. Our <strong>14-day lifestyle program</strong> is where you put it into practice, with our medical and wellness team beside you every day, and 8 weeks of coaching once you're home.</p>
       <div class="detailcard">
         <ul class="facts">
-          <li><span class="fi" aria-hidden="true">📅</span><span><strong>Choose your month</strong><br>December through June, 12 seats each month</span></li>
+          <li><span class="fi" aria-hidden="true">📅</span><span><strong>Choose your session</strong><br>Six sessions, December through April</span></li>
           <li><span class="fi" aria-hidden="true">🏡</span><span><strong>Live-in at Eden Valley</strong><br>Loveland, Colorado, at the foot of the Rocky Mountains</span></li>
           <li><span class="fi" aria-hidden="true">🩺</span><span><strong>Doctor consultation and daily care</strong><br>Working alongside your own physician</span></li>
           <li><span class="fi" aria-hidden="true">🌱</span><span><strong>8 weeks of aftercare</strong><br>Coaching at home to help the changes last</span></li>
@@ -754,7 +756,7 @@ footer p{margin-bottom:10px}
     <div class="reserve-copy">
       <p class="label">Reserve My Spot</p>
       <h2>Your spot is waiting</h2>
-      <p>Choose the month that works for you and hold your seat with $100. Our admissions team will call you to plan your stay.</p>
+      <p>Choose the session that works for you and hold your spot with $100. Our admissions team will call you to plan your stay.</p>
       <ul class="ticks">
         <li><span class="pin"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span><strong>14 days at Eden Valley</strong> with doctor consultation, treatments, meals, and lectures</span></li>
         <li><span class="pin"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span><strong>8 weeks of aftercare</strong> coaching once you're home</span></li>
@@ -773,11 +775,11 @@ footer p{margin-bottom:10px}
           <span class="oc-save">You save $1,995</span>
         </div>
         <fieldset class="months" id="months">
-          <legend>Choose your month</legend>
+          <legend>Choose your session</legend>
           <div class="mgrid" id="mgrid"></div>
         </fieldset>
         <div class="oc-deposit">
-          <b>$100 today</b> holds your seat<span id="ocMonth"></span>. It comes off your program fee, so the balance is $4,900.
+          <b>$100 today</b> holds your spot<span id="ocMonth"></span>. It comes off your program fee, so the balance is $4,900.
         </div>
         <a class="btn btn-primary btn-lg oc-btn is-off" id="payBtn" href="#months" aria-disabled="true">Reserve My Spot</a>
         <p class="note">Space is limited. We accept a small number of guests each session so everyone gets personal care.</p>
@@ -792,7 +794,7 @@ footer p{margin-bottom:10px}
   <p class="label">How it works</p>
   <h2>Three simple steps</h2>
   <div class="steps">
-    <div><span class="n">1</span><h3>Reserve my spot</h3><p>Pick the month that works for you, then pay $100 to hold your spot at the webinar guest price of $5,000.</p></div>
+    <div><span class="n">1</span><h3>Reserve my spot</h3><p>Pick the session dates that work for you, then pay $100 to hold your spot at the webinar guest price of $5,000.</p></div>
     <div><span class="n">2</span><h3>Talk with admissions</h3><p>Our team calls you to go over your health history, answer your questions, and help you plan your trip.</p></div>
     <div><span class="n">3</span><h3>Arrive at Eden Valley</h3><p>Fly into Denver by 11:30 AM on your first day. We pick you up at the airport and bring you to our campus.</p></div>
   </div>
@@ -856,12 +858,12 @@ footer p{margin-bottom:10px}
   <div class="wrap">
     <h2>Common questions</h2>
     <div class="list">
-      <details open><summary>What does the $100 do?</summary><p>It holds your seat in the month you choose at the webinar guest price of $5,000. The $100 comes off your program fee, so the balance is $4,900.</p></details>
+      <details open><summary>What does the $100 do?</summary><p>It holds your spot in the session you choose at the webinar guest price of $5,000. The $100 comes off your program fee, so the balance is $4,900.</p></details>
       <details><summary>Who is this program for?</summary><p>People facing a serious health challenge who want to take an active part in their own healing. Our admissions team talks with every guest before they come, to make sure the program is a good fit for where you are.</p></details>
       <details><summary>Do I have to stop my current treatment?</summary><p>No. Our program is designed to support your body alongside your medical care. Any change to your treatment belongs in a conversation with your own doctor.</p></details>
       <details><summary>How do I get there?</summary><p>Fly into Denver International Airport. Plan to land by 11:30 AM on the first day of your session. We offer free pickup at 11:30 AM and bring you to our campus in Loveland, Colorado. For the trip home, book a flight between 1:00 and 3:00 PM on the last day. Our admissions team will confirm your exact dates.</p></details>
       <details><summary>Can a family member come with me?</summary><p>Yes. Many guests bring a spouse or friend as a support person. Support persons stay with you, share the meals, lectures, and exercise, and have their own rate. Ask our admissions team for details.</p></details>
-      <details><summary>What if my month is full?</summary><p>Each month has 12 seats. If the one you want is full, choose another month, or call our admissions team at <a href="tel:+19706697730">(970) 669-7730</a> and we'll help you find a fit.</p></details>
+      <details><summary>What if my session is full?</summary><p>Each session has a small number of spots. When a session is full, it is crossed out. Choose another session, or call our admissions team at <a href="tel:+19706697730">(970) 669-7730</a> and we'll help you find a fit.</p></details>
     </div>
   </div>
 </section>
@@ -890,53 +892,51 @@ footer p{margin-bottom:10px}
 
 <script>
 
-// Month picker. Each month has its own GoHighLevel $100 payment link.
-// seats.json is refreshed from GoHighLevel every 10 minutes by .github/workflows/seats.yml.
+// Session picker. Each session has its own GoHighLevel $100 payment link.
+// seats.json lists only the sessions that are full; .github/workflows/seats.yml refreshes it from GoHighLevel every 10 minutes.
 (function(){
-  var MONTHS = [
-    ['December 2026', '6afbbe48906a8b62055d71a5'],
-    ['January 2027',  '6afbc87421a48a3872d26ba1'],
-    ['February 2027', '6afbc8a821a48a3872d26ba2'],
-    ['March 2027',    '6afbc8cf21a48a3872d26ba4'],
-    ['April 2027',    '6afbc8ed21a48a3872d26ba5'],
-    ['May 2027',      '6afbc90b21a48a3872d26ba6'],
-    ['June 2027',     '6afbc929906a8b62055d71ce']
+  var SESSIONS = [
+    ['dec6',  'Dec 6\u201320',        '2026', 'December 6\u201320, 2026',          '6afbbe48906a8b62055d71a5'],
+    ['jan3',  'Jan 3\u201317',        '2027', 'January 3\u201317, 2027',           '6afbc87421a48a3872d26ba1'],
+    ['jan24', 'Jan 24 \u2013 Feb 7',  '2027', 'January 24 \u2013 February 7, 2027', '6afbc8a821a48a3872d26ba2'],
+    ['feb14', 'Feb 14\u201328',       '2027', 'February 14\u201328, 2027',         '6afbc8cf21a48a3872d26ba4'],
+    ['mar7',  'Mar 7\u201321',        '2027', 'March 7\u201321, 2027',             '6afbc8ed21a48a3872d26ba5'],
+    ['mar28', 'Mar 28 \u2013 Apr 11', '2027', 'March 28 \u2013 April 11, 2027',    '6afbc90b21a48a3872d26ba6']
   ];
   var LINK = 'https://link.fastpaydirect.com/payment-link/';
   var grid = document.getElementById('mgrid'), btn = document.getElementById('payBtn'), label = document.getElementById('ocMonth');
-  var seats = {}, chosen = null;
+  var full = {}, chosen = null;
 
   function draw(){
     grid.innerHTML = '';
-    MONTHS.forEach(function(m){
-      var name = m[0], left = seats[name], full = left === 0;
+    SESSIONS.forEach(function(x){
+      var key = x[0], isFull = !!full[key];
       var b = document.createElement('button');
-      b.type = 'button'; b.className = 'mbtn' + (full ? ' full' : '') + (chosen === name ? ' on' : '');
-      b.setAttribute('aria-pressed', chosen === name ? 'true' : 'false');
-      b.disabled = full;
-      var parts = name.split(' ');
-      var note = left == null ? '' : full ? 'Full' : left + (left === 1 ? ' seat' : ' seats') + ' remaining';
-      b.innerHTML = '<b>' + parts[0] + '</b><small>' + parts[1] + '</small>' + (note ? '<span' + (left > 0 && left <= 3 ? ' class="low"' : '') + '>' + note + '</span>' : '');
-      b.addEventListener('click', function(){ chosen = name; draw(); });
+      b.type = 'button'; b.className = 'mbtn' + (isFull ? ' full' : '') + (chosen === key ? ' on' : '');
+      b.setAttribute('aria-pressed', chosen === key ? 'true' : 'false');
+      b.setAttribute('aria-label', x[3] + (isFull ? ', full' : ''));
+      b.disabled = isFull;
+      b.innerHTML = '<b>' + x[1] + '</b><small>' + x[2] + '</small>';
+      b.addEventListener('click', function(){ chosen = key; draw(); });
       grid.appendChild(b);
     });
-    var m = MONTHS.filter(function(x){ return x[0] === chosen; })[0];
-    if (m && seats[chosen] !== 0) {
-      btn.href = LINK + m[1]; btn.target = '_blank'; btn.rel = 'noopener';
+    var m = SESSIONS.filter(function(x){ return x[0] === chosen; })[0];
+    if (m && !full[chosen]) {
+      btn.href = LINK + m[4]; btn.target = '_blank'; btn.rel = 'noopener';
       btn.classList.remove('is-off'); btn.removeAttribute('aria-disabled');
-      btn.textContent = 'Reserve My Spot';
-      label.textContent = ' for ' + chosen;
+      label.textContent = ' for ' + m[3];
     } else {
       chosen = null; btn.href = '#months'; btn.removeAttribute('target');
       btn.classList.add('is-off'); btn.setAttribute('aria-disabled', 'true');
-      btn.textContent = 'Reserve My Spot'; label.textContent = '';
+      label.textContent = '';
     }
+    btn.textContent = 'Reserve My Spot';
   }
-  btn.addEventListener('click', function(e){ if (!chosen) { e.preventDefault(); grid.querySelector('button:not(:disabled)') && grid.querySelector('button:not(:disabled)').focus(); } });
+  btn.addEventListener('click', function(e){ if (!chosen) { e.preventDefault(); var f = grid.querySelector('button:not(:disabled)'); if (f) f.focus(); } });
   draw();
   fetch('seats.json?t=' + Math.floor(Date.now() / 60000), { cache: 'no-store' })
     .then(function(r){ return r.ok ? r.json() : null; })
-    .then(function(d){ if (d && d.seats) { seats = d.seats; draw(); } })
+    .then(function(d){ if (d && d.full) { full = {}; d.full.forEach(function(k){ full[k] = true; }); draw(); } })
     .catch(function(){});
 })();
 
