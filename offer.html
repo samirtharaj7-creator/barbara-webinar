@@ -684,14 +684,14 @@ footer p{margin-bottom:10px}
 .admissions-end .legal{text-align:left}
 @media (max-width:900px){.top-img{height:240px;margin-bottom:28px}.admissions-end h2{font-size:30px}.adm-phone{font-size:28px}.end-cta{padding:40px 0 48px}}
 
-/* three program cards */
+/* program cards */
 .reserve-copy{text-align:center;max-width:820px;margin:0 auto 34px}
 .reserve-copy .label{justify-content:center}
 .reserve-ticks{display:grid;grid-template-columns:1fr 1fr;gap:10px 28px;text-align:left;max-width:760px;margin:22px auto 0}
-.prog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
+.prog-grid{display:grid;grid-template-columns:repeat(2,minmax(0,460px));justify-content:center;gap:26px;align-items:stretch}
 .prog-grid .offercard{display:flex;flex-direction:column;padding:26px 20px 22px}
-.prog-grid .offercard h2{font-size:25px;line-height:1.15;min-height:2.3em;display:flex;align-items:center;justify-content:center}
-.prog-grid .oc-prog{text-align:center;line-height:1.6;min-height:3.2em}
+.prog-grid .offercard h2{font-size:25px;line-height:1.15;display:flex;align-items:center;justify-content:center}
+.prog-grid .oc-prog{text-align:center;line-height:1.6}
 .prog-grid .oc-now{font-size:54px}
 .prog-grid .oc-was s{font-size:36px}
 .prog-grid .mgrid{grid-template-columns:repeat(2,1fr)}
@@ -702,7 +702,7 @@ footer p{margin-bottom:10px}
 .prog-grid .oc-btn{margin-top:auto}
 .reserve-call{text-align:center;color:var(--muted);margin:24px 0 0;font-size:16px}
 .reserve-call a{color:#2f6684;font-weight:700}
-@media (max-width:1060px){.prog-grid{grid-template-columns:minmax(0,560px);justify-content:center}.prog-grid .offercard h2,.prog-grid .oc-prog{min-height:0}}
+@media (max-width:900px){.prog-grid{grid-template-columns:minmax(0,560px);justify-content:center}.prog-grid .offercard h2,.prog-grid .oc-prog{min-height:0}}
 @media (max-width:640px){.reserve-ticks{grid-template-columns:1fr}}
 </style>
 </head>
@@ -818,22 +818,6 @@ footer p{margin-bottom:10px}
         <div class="oc-deposit"><b>$100 today</b> holds your spot<span class="oc-when"></span>. It comes off your program fee.</div>
         <a class="btn btn-primary btn-lg oc-btn is-off" href="#reserve" aria-disabled="true">Reserve My Spot</a>
       </div>
-      <div class="formcard offercard" data-program="general">
-        <span class="limited">Webinar guests only</span>
-        <h2>General Lifestyle Program</h2>
-        <p class="oc-prog">A full health reset for body, mind, and spirit</p>
-        <div class="oc-price">
-          <span class="oc-was">Regular price <s>$5,995</s></span>
-          <span class="oc-now">$4,995</span>
-          <span class="oc-save">You save $1,000</span>
-        </div>
-        <fieldset class="months">
-          <legend>Choose your session</legend>
-          <div class="mgrid"></div>
-        </fieldset>
-        <div class="oc-deposit"><b>$100 today</b> holds your spot<span class="oc-when"></span>. It comes off your program fee.</div>
-        <a class="btn btn-primary btn-lg oc-btn is-off" href="#reserve" aria-disabled="true">Reserve My Spot</a>
-      </div>
     </div>
     <p class="note reserve-call">Space is limited, so everyone gets personal care. Questions first? Call admissions at <a href="tel:+19706697730">(970) 669-7730</a></p>
   </div>
@@ -907,8 +891,8 @@ footer p{margin-bottom:10px}
   <div class="wrap">
     <h2>Common questions</h2>
     <div class="list">
-      <details open><summary>What does the $100 do?</summary><p>It holds your spot in the program and session you choose at the webinar guest price: $5,995 for the 14-Day Intensive Program, or $4,995 for the Diabetes &amp; Hypertension or General Lifestyle Program. The $100 comes off your program fee.</p></details>
-      <details><summary>Which program is right for me?</summary><p>The <strong>14-Day Intensive Program</strong> is for people facing a serious health challenge who want our most intensive care. The <strong>Diabetes &amp; Hypertension Program</strong> focuses on blood sugar and blood pressure. The <strong>General Lifestyle Program</strong> is for anyone who wants a full health reset. Not sure? Our admissions team talks with every guest before they come and will help you choose.</p></details>
+      <details open><summary>What does the $100 do?</summary><p>It holds your spot in the program and session you choose at the webinar guest price: $5,995 for the 14-Day Intensive Program, or $4,995 for the Diabetes &amp; Hypertension Program. The $100 comes off your program fee.</p></details>
+      <details><summary>Which program is right for me?</summary><p>The <strong>14-Day Intensive Program</strong> is for people facing a serious health challenge who want our most intensive care. The <strong>Diabetes &amp; Hypertension Program</strong> focuses on blood sugar and blood pressure. Not sure? Our admissions team talks with every guest before they come and will help you choose.</p></details>
       <details><summary>Do I have to stop my current treatment?</summary><p>No. Our program is designed to support your body alongside your medical care. Any change to your treatment belongs in a conversation with your own doctor.</p></details>
       <details><summary>How do I get there?</summary><p>Fly into Denver International Airport. Plan to land by 11:30 AM on the first day of your session. We offer free pickup at 11:30 AM and bring you to our campus in Loveland, Colorado. For the trip home, book a flight between 1:00 and 3:00 PM on the last day. Our admissions team will confirm your exact dates.</p></details>
       <details><summary>Can a family member come with me?</summary><p>Yes. Many guests bring a spouse or friend as a support person. Support persons stay with you, share the meals, lectures, and exercise, and have their own rate. Ask our admissions team for details.</p></details>
@@ -941,8 +925,8 @@ footer p{margin-bottom:10px}
 
 <script>
 
-// Session picker, one per program card. Each program + session has its own GoHighLevel $100 payment link.
-// The 12 spots per session are shared by all three programs. seats.json lists only the sessions that are full;
+// Session picker, one per program card (two programs). Each program + session has its own GoHighLevel $100 payment link.
+// The 12 spots per session are shared by both programs. seats.json lists only the sessions that are full;
 // .github/workflows/seats.yml refreshes it from GoHighLevel every 10 minutes.
 (function(){
   var SESSIONS = [
@@ -955,8 +939,7 @@ footer p{margin-bottom:10px}
   ];
   var LINKS = {
     intensive: { dec6:'6afbbe48906a8b62055d71a5', jan3:'6afbc87421a48a3872d26ba1', jan24:'6afbc8a821a48a3872d26ba2', feb14:'6afbc8cf21a48a3872d26ba4', mar7:'6afbc8ed21a48a3872d26ba5', mar28:'6afbc90b21a48a3872d26ba6' },
-    dh:        { dec6:'6afd32ad21a48a3872d27163', jan3:'6afd32be906a8b62055d7776', jan24:'6afd32cf21a48a3872d27165', feb14:'6afd32f821a48a3872d27167', mar7:'6afd330921a48a3872d27168', mar28:'6afd331a21a48a3872d27169' },
-    general:   { dec6:'6afd31f221a48a3872d2715b', jan3:'6afd321d906a8b62055d7773', jan24:'6afd323a21a48a3872d2715d', feb14:'6afd326221a48a3872d2715f', mar7:'6afd327321a48a3872d27160', mar28:'6afd328421a48a3872d27161' }
+    dh:        { dec6:'6afd32ad21a48a3872d27163', jan3:'6afd32be906a8b62055d7776', jan24:'6afd32cf21a48a3872d27165', feb14:'6afd32f821a48a3872d27167', mar7:'6afd330921a48a3872d27168', mar28:'6afd331a21a48a3872d27169' }
   };
   var LINK = 'https://link.fastpaydirect.com/payment-link/';
   var full = {}, cards = [];

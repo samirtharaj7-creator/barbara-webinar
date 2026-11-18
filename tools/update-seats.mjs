@@ -1,6 +1,6 @@
 // Reads seats sold per session from GoHighLevel and writes seats.json with only the
 // sessions that are full (no counts are published). The 12 spots per session are shared
-// by all three programs: a session is full once 12 reservations are made across them.
+// by both programs: a session is full once 12 reservations are made across both.
 // Runs in GitHub Actions every 10 minutes. Needs the GHL_TOKEN secret
 // (a GoHighLevel Private Integration token with the "View Prices" scope).
 import { readFile, writeFile } from 'node:fs/promises';
@@ -11,7 +11,6 @@ const SPOTS = 12; // per session, shared; each variant also starts at 12 in GoHi
 const PRODUCTS = {
   '6afbbdcfef0fdd31635b125a': '14-Day Intensive Program',
   '6afd313fac90a35bbd5fdb8d': 'Diabetes & Hypertension Program',
-  '6afd319af3efb6f8059b7179': 'General Lifestyle Program',
 };
 // Session key used by offer.html -> text that appears in the variant name
 const SESSIONS = {
