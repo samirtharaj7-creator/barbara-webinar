@@ -704,6 +704,16 @@ footer p{margin-bottom:10px}
 .reserve-call a{color:#2f6684;font-weight:700}
 @media (max-width:900px){.prog-grid{grid-template-columns:minmax(0,560px);justify-content:center}.prog-grid .offercard h2,.prog-grid .oc-prog{min-height:0}}
 @media (max-width:640px){.reserve-ticks{grid-template-columns:1fr}}
+
+/* waiting list */
+.oc-wait{margin:-6px 0 14px;text-align:center;font-size:15px}
+.oc-wait a{color:#f3d34a;font-weight:700}
+.waitlist{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:36px;align-items:start;max-width:946px;margin:40px auto 0;scroll-margin-top:90px}
+.waitlist[hidden]{display:none}
+.wl-copy h3{font-family:var(--serif);font-size:30px;line-height:1.15;margin:10px 0 12px;color:var(--ink)}
+.wl-form{padding:12px}
+.wl-form iframe{display:block;width:100%;min-height:500px;background:#fff;border-radius:12px}
+@media (max-width:900px){.waitlist{grid-template-columns:1fr;gap:18px}.wl-copy h3{font-size:26px}}
 </style>
 </head>
 <body>
@@ -799,6 +809,7 @@ footer p{margin-bottom:10px}
           <legend>Choose your session</legend>
           <div class="mgrid"></div>
         </fieldset>
+        <p class="oc-wait" hidden><a href="#waitlist">Session full? Join the waiting list</a></p>
         <div class="oc-deposit"><b>$100 today</b> holds your spot<span class="oc-when"></span>. It comes off your program fee and is non-refundable.</div>
         <a class="btn btn-primary btn-lg oc-btn is-off" href="#reserve" aria-disabled="true">Reserve My Spot</a>
       </div>
@@ -815,8 +826,37 @@ footer p{margin-bottom:10px}
           <legend>Choose your session</legend>
           <div class="mgrid"></div>
         </fieldset>
+        <p class="oc-wait" hidden><a href="#waitlist">Session full? Join the waiting list</a></p>
         <div class="oc-deposit"><b>$100 today</b> holds your spot<span class="oc-when"></span>. It comes off your program fee and is non-refundable.</div>
         <a class="btn btn-primary btn-lg oc-btn is-off" href="#reserve" aria-disabled="true">Reserve My Spot</a>
+      </div>
+    </div>
+    <div class="waitlist" id="waitlist" hidden>
+      <div class="wl-copy">
+        <p class="label">Waiting list</p>
+        <h3>Session full? Join the waiting list</h3>
+        <p>Tell us which program and session you want. If a spot opens, our admissions team will contact you. Joining the waiting list is free.</p>
+      </div>
+      <div class="formcard wl-form">
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/sbQe1BbWytun2BdR2cEl"
+          style="width:100%;height:100%;border:none;border-radius:12px"
+          id="inline-sbQe1BbWytun2BdR2cEl"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Barbara Webinar Offer - Waiting List"
+          data-height="500"
+          data-layout-iframe-id="inline-sbQe1BbWytun2BdR2cEl"
+          data-form-id="sbQe1BbWytun2BdR2cEl"
+          data-cookie-consent="true"
+          data-cookie-consent-provider="auto"
+          title="Waiting list form">
+        </iframe>
       </div>
     </div>
     <p class="note reserve-call">Space is limited, so everyone gets personal care. Questions first? Call admissions at <a href="tel:+19706697730">(970) 669-7730</a></p>
@@ -946,7 +986,12 @@ footer p{margin-bottom:10px}
   var full = {}, cards = [];
 
   [].forEach.call(document.querySelectorAll('.offercard[data-program]'), function(card){
-    var c = { prog: card.getAttribute('data-program'), name: card.querySelector('h2').textContent, grid: card.querySelector('.mgrid'), btn: card.querySelector('.oc-btn'), when: card.querySelector('.oc-when'), chosen: null };
+    var c = { prog: card.getAttribute('data-program'), name: card.querySelector('h2').textContent, grid: card.querySelector('.mgrid'), btn: card.querySelector('.oc-btn'), when: card.querySelector('.oc-when'), wait: card.querySelector('.oc-wait'), chosen: null };
+    c.wait.querySelector('a').addEventListener('click', function(){
+      // Prefill the program on the waiting list form (GoHighLevel reads query keys).
+      var want = WL_BASE + '?waiting_list_program=' + encodeURIComponent(c.name);
+      if (WLF.src !== want) WLF.src = want;
+    });
     c.btn.addEventListener('click', function(e){ if (!c.chosen) { e.preventDefault(); var f = c.grid.querySelector('button:not(:disabled)'); if (f) f.focus(); } });
     cards.push(c);
   });
@@ -976,7 +1021,14 @@ footer p{margin-bottom:10px}
     }
     c.btn.textContent = 'Reserve My Spot';
   }
-  function drawAll(){ cards.forEach(draw); }
+  var WL = document.getElementById('waitlist'), WLF = document.getElementById('inline-sbQe1BbWytun2BdR2cEl');
+  var WL_BASE = 'https://api.leadconnectorhq.com/widget/form/sbQe1BbWytun2BdR2cEl';
+  function drawAll(){
+    cards.forEach(draw);
+    var anyFull = Object.keys(full).length > 0;
+    WL.hidden = !anyFull;
+    cards.forEach(function(c){ c.wait.hidden = !anyFull; });
+  }
   drawAll();
   fetch('seats.json?t=' + Math.floor(Date.now() / 60000), { cache: 'no-store' })
     .then(function(r){ return r.ok ? r.json() : null; })
@@ -1031,5 +1083,6 @@ footer p{margin-bottom:10px}
 })();
 
 </script>
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
 </body>
 </html>
