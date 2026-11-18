@@ -635,6 +635,7 @@ footer p{margin-bottom:10px}
 
 /* month picker */
 .months{border:0;margin:0 0 16px;padding:0;text-align:left}
+.mnote{color:rgba(255,255,255,.88);font-size:15px;line-height:1.45;margin:-4px 0 12px}
 .months legend{color:#fff;font-weight:700;font-size:15px;margin:0 0 10px;padding:0}
 .mgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 .mbtn{font:inherit;display:flex;flex-direction:column;align-items:flex-start;gap:1px;text-align:left;cursor:pointer;background:rgba(255,255,255,.06);border:2px solid rgba(143,197,99,.35);border-radius:14px;padding:10px 12px;color:#e7f2da;min-height:64px;transition:border-color .15s,background .15s}
@@ -790,7 +791,7 @@ footer p{margin-bottom:10px}
   <div class="wrap">
     <div class="reserve-copy">
       <h2>Choose your program</h2>
-      <p>Pick the program and session that fit you, and hold your spot with $100. This offer is only available for the dates listed. Our admissions team will call you to plan your stay.</p>
+      <p>Pick the program and a tentative session date, and hold your spot with $100. Our admissions team will call you to confirm your date and plan your stay. This guest price is for the sessions listed.</p>
       <ul class="ticks reserve-ticks">
         <li><span class="pin"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span><strong>14 days at Eden Valley</strong> with doctor consultation, treatments, meals, and lectures</span></li>
         <li><span class="pin"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span><strong>8 weeks of aftercare</strong> coaching once you're home</span></li>
@@ -810,6 +811,7 @@ footer p{margin-bottom:10px}
         </div>
         <fieldset class="months">
           <legend>Choose your session</legend>
+          <p class="mnote">Select a tentative date to reserve your spot — we'll confirm your date together on a short call.</p>
           <div class="mgrid"></div>
         </fieldset>
         <p class="oc-wait" hidden><a href="#waitlist">Session full? Join the waiting list</a></p>
@@ -827,6 +829,7 @@ footer p{margin-bottom:10px}
         </div>
         <fieldset class="months">
           <legend>Choose your session</legend>
+          <p class="mnote">Select a tentative date to reserve your spot — we'll confirm your date together on a short call.</p>
           <div class="mgrid"></div>
         </fieldset>
         <p class="oc-wait" hidden><a href="#waitlist">Session full? Join the waiting list</a></p>
@@ -932,7 +935,7 @@ footer p{margin-bottom:10px}
     <h2>Common questions</h2>
     <div class="list">
       <details open><summary>What does the $100 do?</summary><p>It holds your spot in the program and session you choose at the webinar guest price: $5,995 for the 14-Day Intensive Program, or $4,995 for the Diabetes &amp; Hypertension Program. The $100 comes off your program fee. It is non-refundable.</p></details>
-      <details><summary>Can I choose a different date?</summary><p>This webinar offer is only available for the session dates listed above. For other dates, call our admissions team at <a href="tel:+19706697730">(970) 669-7730</a> about our regular programs.</p></details>
+      <details><summary>Can I choose a different date?</summary><p>Yes. The date you pick is tentative, and we'll confirm it with you on a short call. If none of the sessions listed work for you, call our admissions team at <a href="tel:+19706697730">(970) 669-7730</a> and we'll talk through your options.</p></details>
       <details><summary>Which program is right for me?</summary><p>The <strong>14-Day Intensive Program</strong> is for people facing a serious health challenge who want our most intensive care. The <strong>Diabetes &amp; Hypertension Program</strong> focuses on blood sugar and blood pressure. Not sure? Our admissions team talks with every guest before they come and will help you choose.</p></details>
       <details><summary>Do I have to stop my current treatment?</summary><p>No. Our program is designed to support your body alongside your medical care. Any change to your treatment belongs in a conversation with your own doctor.</p></details>
       <details><summary>How do I get there?</summary><p>Fly into Denver International Airport. Plan to land by 11:30 AM on the first day of your session. We offer free pickup at 11:30 AM and bring you to our campus in Loveland, Colorado. For the trip home, book a flight between 1:00 and 3:00 PM on the last day. Our admissions team will confirm your exact dates.</p></details>
@@ -978,8 +981,8 @@ footer p{margin-bottom:10px}
     ['mar28', 'Mar 28 \u2013 Apr 11', '2027', 'March 28 \u2013 April 11, 2027']
   ];
   var LINKS = {
-    intensive: { dec6:'6afbbe48906a8b62055d71a5', jan3:'6afbc87421a48a3872d26ba1', jan24:'6afbc8a821a48a3872d26ba2', feb14:'6afbc8cf21a48a3872d26ba4', mar7:'6afbc8ed21a48a3872d26ba5', mar28:'6afbc90b21a48a3872d26ba6' },
-    dh:        { dec6:'6afd32ad21a48a3872d27163', jan3:'6afd32be906a8b62055d7776', jan24:'6afd32cf21a48a3872d27165', feb14:'6afd32f821a48a3872d27167', mar7:'6afd330921a48a3872d27168', mar28:'6afd331a21a48a3872d27169' }
+    intensive: { dec6:'6afdec7c906a8b62055d7a00', jan3:'6afdeca021a48a3872d273f8', jan24:'6afdecc021a48a3872d273f9', feb14:'6afdece8906a8b62055d7a05', mar7:'6afdecfd906a8b62055d7a06', mar28:'6afded62906a8b62055d7a0a' },
+    dh:        { dec6:'6afded41906a8b62055d7a09', jan3:'6afded8a21a48a3872d273fc', jan24:'6afdeda0906a8b62055d7a0c', feb14:'6afdedd121a48a3872d27400', mar7:'6afdede821a48a3872d27404', mar28:'6afdedfe906a8b62055d7a0f' }
   };
   var LINK = 'https://link.fastpaydirect.com/payment-link/';
   var full = {}, cards = [];
