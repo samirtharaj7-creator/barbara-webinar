@@ -671,10 +671,10 @@ footer p{margin-bottom:10px}
   .reserve-card .offercard{margin:0 auto}
 }
 .top-img{width:100%;height:420px;object-fit:cover;border-radius:24px;display:block;margin:0 0 40px;box-shadow:0 18px 36px -24px rgba(31,51,34,.6)}
-.offer-hero .hero-intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);grid-template-areas:"eyebrow card" "title card" "lede card" "cta card";column-gap:56px;align-items:start}
+.offer-hero .hero-intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);grid-template-areas:"lede card" "cta card";column-gap:56px;align-items:start}
 .offer-hero .hero-intro>.eyebrow{grid-area:eyebrow}.offer-hero .hero-intro>h1{grid-area:title}.offer-hero .hero-intro>.lede{grid-area:lede}
 .offer-hero .hero-intro>.detailcard{grid-area:card;align-self:center;margin-top:0}.offer-hero .hero-intro>.hero-cta{grid-area:cta}
-@media (max-width:900px){.offer-hero .hero-intro{grid-template-columns:1fr;grid-template-areas:"eyebrow" "title" "lede" "card" "cta"}.offer-hero .hero-intro>.detailcard{margin-top:22px}}
+@media (max-width:900px){.offer-hero .hero-intro{grid-template-columns:1fr;grid-template-areas:"lede" "card" "cta"}.offer-hero .hero-intro>.detailcard{margin-top:22px}}
 .end-cta{padding:56px 0 64px;text-align:center}
 .admissions-end{background:#e3f0d5;text-align:center}
 .admissions-end .adm{max-width:640px;margin:0 auto 34px}
@@ -714,6 +714,9 @@ footer p{margin-bottom:10px}
 .wl-form{padding:12px}
 .wl-form iframe{display:block;width:100%;min-height:500px;background:#fff;border-radius:12px}
 @media (max-width:900px){.waitlist{grid-template-columns:1fr;gap:18px}.wl-copy h3{font-size:26px}}
+.hero-title{margin:0 0 26px}.hero-title h1{margin-bottom:0}
+.offer-hero .hero-intro{grid-template-rows:auto 1fr}.offer-hero .hero-intro>.hero-cta{align-self:start}
+@media (max-width:900px){.offer-hero .hero-intro{grid-template-rows:none}}
 </style>
 </head>
 <body>
@@ -733,10 +736,12 @@ footer p{margin-bottom:10px}
 
 <section class="hero offer-hero">
   <div class="wrap">
-    <img class="top-img" src="images/offer/valley.jpg" alt="The Eden Valley campus and farmland below the foothills">
-    <div class="hero-intro">
+    <div class="hero-title">
       <p class="eyebrow">Thank you for joining Barbara O'Neill</p>
       <h1>Ready to take <em>the next step?</em></h1>
+    </div>
+    <img class="top-img" src="images/offer/valley.jpg" alt="The Eden Valley campus and farmland below the foothills">
+    <div class="hero-intro">
       <p class="lede">You heard what can happen when the body is supported well. Our <strong>14-day lifestyle program</strong> is where you put it into practice, with our medical and wellness team beside you every day, and 8 weeks of coaching once you're home.</p>
       <div class="detailcard">
         <ul class="facts">
@@ -754,7 +759,6 @@ footer p{margin-bottom:10px}
 <section class="included" id="included">
   <div class="wrap inc-grid">
     <div>
-      <p class="label">What's included</p>
       <h2>Everything for your 14 days</h2>
       <p>One price covers your stay, your meals, your treatments, and your aftercare. There's nothing else to book once you arrive.</p>
       <ul class="inc-list">
@@ -785,7 +789,6 @@ footer p{margin-bottom:10px}
 <section class="reserve-end" id="reserve">
   <div class="wrap">
     <div class="reserve-copy">
-      <p class="label">Reserve My Spot</p>
       <h2>Choose your program</h2>
       <p>Pick the program and session that fit you, and hold your spot with $100. This offer is only available for the dates listed. Our admissions team will call you to plan your stay.</p>
       <ul class="ticks reserve-ticks">
@@ -833,7 +836,6 @@ footer p{margin-bottom:10px}
     </div>
     <div class="waitlist" id="waitlist" hidden>
       <div class="wl-copy">
-        <p class="label">Waiting list</p>
         <h3>Session full? Join the waiting list</h3>
         <p>Tell us which program and session you want. If a spot opens, our admissions team will contact you. Joining the waiting list is free.</p>
       </div>
@@ -864,7 +866,6 @@ footer p{margin-bottom:10px}
 </section>
 
 <section class="how" id="how">
-  <p class="label">How it works</p>
   <h2>Three simple steps</h2>
   <div class="steps">
     <div><span class="n">1</span><h3>Reserve my spot</h3><p>Pick the session dates that work for you, then pay $100 to hold your spot at the webinar guest price.</p></div>
@@ -918,7 +919,6 @@ footer p{margin-bottom:10px}
     <div class="snap team-snap"><img src="images/offer/team.jpg" alt="The Eden Valley Lifestyle team standing together outdoors" loading="lazy"></div>
   </figure>
   <div>
-    <p class="label">Who will care for you</p>
     <h2>A team that walks with you</h2>
     <p>For more than 60 years, Eden Valley has helped people with cancer and chronic disease rebuild their health in body, mind, and spirit.</p>
     <p>Our team includes a <strong>licensed medical doctor</strong>, <strong>licensed massage therapists</strong>, and <strong>certified health coaches</strong>. You'll see them every day: at treatments, at meals, in lectures, and in the quiet conversations in between.</p>
@@ -951,8 +951,7 @@ footer p{margin-bottom:10px}
 <footer class="admissions-end">
   <div class="wrap">
     <div class="adm">
-      <p class="label">Admissions</p>
-      <h2>Call us</h2>
+      <h2>Call Admissions</h2>
       <p class="adm-phone"><a href="tel:+19706697730">(970) 669-7730</a></p>
       <p>Monday to Thursday, 8 AM to 5 PM · Friday, 8 AM to 1 PM (Mountain Time)</p>
       <p>Or email <a href="mailto:admissions@eden-valley.org">admissions@eden-valley.org</a></p>
