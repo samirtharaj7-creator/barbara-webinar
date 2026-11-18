@@ -1081,6 +1081,22 @@ footer p{margin-bottom:10px}
   window.addEventListener('resize',update); update();
 })();
 
+// When shown inside a Squarespace page (code block iframe), report height and handle in-page links.
+(function(){
+  if (window.parent === window) return;
+  document.documentElement.classList.add('embedded');
+  function post(m){ m.src = 'barbara-offer'; window.parent.postMessage(m, '*'); }
+  var last = 0;
+  function height(){ var h = document.documentElement.scrollHeight; if (h !== last) { last = h; post({type:'height', h:h}); } }
+  if ('ResizeObserver' in window) new ResizeObserver(height).observe(document.body);
+  window.addEventListener('load', height); setInterval(height, 1000); height();
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a) return;
+    var el = document.querySelector(a.getAttribute('href')); if (!el) return;
+    e.preventDefault();
+    setTimeout(function(){ post({type:'scroll', y: el.getBoundingClientRect().top + window.scrollY}); }, 50);
+  });
+})();
 </script>
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 </body>
